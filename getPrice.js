@@ -2,10 +2,10 @@ require('dotenv').config();
 const axios = require('axios').default;
 
 module.exports = {
-	async getPrice() {
+	async getPrice(symbol) {
 		let response;
 		try {
-			response = await axios.get('https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=LIBERO', {
+			response = await axios.get(`https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=${symbol}`, {
 				headers: {
 					'X-CMC_PRO_API_KEY': process.env.CMC_KEY,
 				},
@@ -29,7 +29,8 @@ module.exports = {
 			console.log(error.config);
 		}
 		if (response) {
-			return response.data.data.LIBERO[0];
+			// eval is an unsafe method to execute code snippets in JavaScript, maybe there is better workaround
+			return eval(`response.data.data.${symbol}[0]`);
 		}
 	},
 };
