@@ -21,7 +21,7 @@ client.on('ready', async () => {
 		await message.guild.me.setNickname(`${price.quote.USD.price.toPrecision(5)}$`);
 	}, 10000);
 
-	client.user.setActivity('Price Movements', { type: 'WATCHING' });
+	client.user.setActivity(`${symbol} Price`, { type: 'WATCHING' });
 });
 
 runner();
