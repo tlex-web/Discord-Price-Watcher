@@ -19,7 +19,7 @@ client.on('ready', async () => {
 	setInterval(async () => {
 		const price = await getPrice(symbol);
 		await message.guild.me.setNickname(`${price.quote.USD.price.toPrecision(5)}$`);
-	}, 10000);
+	}, 576000);
 
 	client.user.setActivity(`${symbol} Price`, { type: 'WATCHING' });
 });
